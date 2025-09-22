@@ -99,6 +99,9 @@ body {
     display: flex;
     align-items: center;
 }
+.flex-even{
+    justify-content: space-evenly;
+}
 
 #level{
     background-color: rgb(17, 15, 15);
