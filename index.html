@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <meta charset="UTF-8">
+    <title>D&D Character Creator</title>
+</head>
+<body>
+    <div class="container">
+        <button onclick="createCharacter()" id="generate-btn">Generate Character</button>
+        <div class="grid">
+            <div class="box">
+                <video id="popupVideo" class="fullScreenVideo" onended="closeVideo()">
+                <source src="wizard.mp4" type="video/mp4">
+                Your browser does not support HTML5 video.
+                </video>
+                <h1>Character</h1>
+                <ul class="character-info">
+                    <li><strong>Name:</strong> <span id="char-name">-</span></li>
+                    <li><strong>Race:</strong> <span id="char-race">-</span></li>
+                    <li><strong>Class:</strong> <span id="char-class">-</span></li>
+                    <li><strong>Subclass:</strong> <span id="char-subclass">-</span></li>
+                    <li><strong>Background:</strong> <span id="char-background">-</span></li>
+                    <li><strong>Alignment:</strong> <span id="char-alignment">-</span></li>
+                </ul>
+            </div>
+            <div class="box">
+                <h1>Stats</h1>
+                <ul class="stats-list">
+                    <li><strong>Strength:</strong> <span id="stat-str">-</span></li>
+                    <li><strong>Dexterity:</strong> <span id="stat-dex">-</span></li>
+                    <li><strong>Constitution:</strong> <span id="stat-con">-</span></li>
+                    <li><strong>Intelligence:</strong> <span id="stat-int">-</span></li>
+                    <li><strong>Wisdom:</strong> <span id="stat-wis">-</span></li>
+                    <li><strong>Charisma:</strong> <span id="stat-cha">-</span></li>
+                </ul>
+            </div>
+            <div class="box">
+                <h1>Skill Proficiencies</h1>
+                <ul class="prof-container scroll" id="skill-proficiencies-container">
+                    <!-- Proficiencies will be dynamically added here -->
+                </ul>
+            </div>
+            <div class="box">
+                <h1>Other Proficiencies</h1>
+                <ul class="prof-container scroll" id="proficiencies-container">
+                    <!-- Proficiencies will be dynamically added here -->
+                </ul>
+            </div>
+            <div class="box">
+                <h1>Features</h1>
+                <ul class="prof-container scroll" id="features-container">
+                    <!-- Features will be dynamically added here -->
+                </ul>
+            </div>
+            <div class="box">
+                <h1>Other</h1>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
