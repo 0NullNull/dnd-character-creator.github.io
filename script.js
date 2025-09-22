@@ -865,7 +865,8 @@ const statPriority = {
     "Druid": "wis",
     "Monk": "dex",
     "Barbarian": "str",
-    "Warlock": "cha"
+    "Warlock": "cha",
+    "Artificer": "int"
 };
 
 const nameSyllables = {
