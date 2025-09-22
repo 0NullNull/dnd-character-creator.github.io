@@ -11,13 +11,13 @@
         <button onclick="createCharacter()" id="generate-btn">Generate Character</button>
         <input type="text" name="" id="level" placeholder="Level (1-20) [WIP]" min="1" max="20" disabled>
         <div class="grid">
-            <div class="box auto-height">
+            <div class="box">
                 <video id="popupVideo" class="fullScreenVideo" onended="closeVideo()">
                 <source src="wizard.mp4" type="video/mp4">
                 Your browser does not support HTML5 video.
                 </video>
                 <h1>Character</h1>
-                <ul class="character-info">
+                <ul class="character-info flex-fill">
                     <li><strong>Name:</strong> <span id="char-name">-</span></li>
                     <li><strong>Race:</strong> <span id="char-race">-</span></li>
                     <li><strong>Class:</strong> <span id="char-class">-</span></li>
@@ -29,9 +29,9 @@
                     <li><strong>Hit-die:</strong> <span id="char-hitdie">-</span></li>
                 </ul>
             </div>
-            <div class="box auto-height" id="stats-container">
+            <div class="box" id="stats-container">
                 <h1>Stats</h1>
-                <ul class="stats-list">
+                <ul class="stats-list flex-fill">
                     <li class="stat-li"><strong>Strength:</strong> <span id="stat-str">-</span></li>
                     <li class="stat-li"><strong>Dexterity:</strong> <span id="stat-dex">-</span></li>
                     <li class="stat-li"><strong>Constitution:</strong> <span id="stat-con">-</span></li>
@@ -41,9 +41,9 @@
                 </ul>
                 <p class="total-stats">Total: <span id="total">-</span></p>
             </div>
-            <div class="box auto-height">
+            <div class="box">
                 <h1>Skill Proficiencies</h1>
-                <ul class="prof-container scroll" id="skill-proficiencies-container">
+                <ul class="prof-container scroll flex-fill" id="skill-proficiencies-container">
                     <!-- Proficiencies will be dynamically added here -->
                 </ul>
             </div>

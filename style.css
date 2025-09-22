@@ -75,13 +75,29 @@ body {
     padding: 20px;
     color: white;
     text-align: center;
-    font-size: 1.5em;
+    font-size: 1em;
     border-radius: 3px;
     border: 2px solid rgb(70, 62, 62);
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    height: 450px;
+    height: 550px;
+}
+.flex-fill{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.flex-fill li{
+    height: auto;
+    margin: 3px;
+    flex: 1;
+    display: flex;
+    align-items: center;
 }
 
 #level{
@@ -136,12 +152,12 @@ body {
 .character-info
 {
     text-align: left;
-    font-size: 0.8em;
+    font-size: 1em;
     line-height: 1.4;
 }
 li{
     text-align: left;
-    font-size: 0.8em;
+    font-size: 1em;
     line-height: 1.4;
     margin: 8px;
     padding: 10px;
@@ -151,7 +167,7 @@ li{
 }
 
 .skill{
-    font-size: 13px;
+    font-size: 1em;
 }
 
 .prof-container{
@@ -188,13 +204,13 @@ li{
     border-radius: 3px;
 }
 .feature h4{
-    font-size: 0.85em;
+    font-size: 1em;
     padding: 5px;
     background-color: rgb(34, 70, 58);
     border-bottom: 2px solid rgb(70, 62, 62);
 }
 .feature p{
-    font-size: 0.75em;
+    font-size: 1em;
     padding: 5px;
 }
 .fullScreenVideo {
@@ -233,31 +249,30 @@ li{
 }
 .total-stats{
     color: rgb(195, 203, 107);
-    font-size: 18px;
-    margin-top: 10px;
+    font-size: 1em;
     padding: 10px;
     border-radius: 4px;
     margin-right: auto;
 }
 
 .stat-high{
-    font-size: 20px;
+    font-size: 1em;
     color: #4c7caf; /* Green for high stats */
 }
 .stat-low{
-    font-size: 20px;
+    font-size: 1em;
     color: #801e17; /* Red for low stats */
 }
 .stat-5{
-    font-size: 25px;
+    font-size: 1em;
     color: #f92010; /* Red for low stats */
 }
 .stat-18{
-    font-size: 22px;
+    font-size: 1em;
     color: #1aff00; /* Gold for perfect score */
 }
 .stat-20{
-    font-size: 30px;
+    font-size: 1em;
     color: #edff21; /* Gold for perfect score */
 }
 .high-total{
