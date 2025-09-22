@@ -1303,13 +1303,19 @@ function createCharacter() {
 }
 
 function closeVideo() { 
-    document.getElementById("popupVideo").pause();
-    document.getElementById("popupVideo").style.display = "none";
-    document.getElementById("popupVideo").currentTime = 0;
-    document.getElementsByClassName("box")[0].classList.remove("wizard");
+  document.getElementById("popupVideo").pause();
+  document.getElementById("popupVideo").style.display = "none";
+  document.getElementById("popupVideo").currentTime = 0;
+  document.getElementsByClassName("box")[0].classList.remove("wizard");
+  Array.from(document.getElementsByClassName("character-info")[0].children).forEach(li =>
+    li.classList.remove("remove-bg")
+  );
 }
-
-function wizard(){
+  
+  function wizard(){
+  Array.from(document.getElementsByClassName("character-info")[0].children).forEach(li =>
+    li.classList.add("remove-bg")
+  );
   document.getElementById("skill-proficiencies-container").innerHTML = "";
   document.getElementById("proficiencies-container").innerHTML = "";
   document.getElementById("features-container").innerHTML = "";
@@ -1491,7 +1497,6 @@ function generateCharacter(options = {}) {
     stats = addRaceASI(stats, race);
 
     const modifiers = calculateModifiers(stats);
-    console.log(modifiers);
 
     // Skills
     const allSkills = getAllSkillProficiencies(background, className, race);
