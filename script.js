@@ -263,7 +263,7 @@ const alignments = [
 const classSkills = {
   Barbarian: {
     hitDie: 12,
-    startingHP: "12 + Constitution modifier",
+    startingHP: 12,
     skills: { choose: 2, options: ["Animal Handling","Athletics","Intimidation","Nature","Perception","Survival"] },
     armor: ["Light armor","Medium armor","Shields"],
     weapons: ["Simple weapons","Martial weapons"],
@@ -272,7 +272,7 @@ const classSkills = {
 
   Bard: {
     hitDie: 8,
-    startingHP: "8 + Constitution modifier",
+    startingHP: 8,
     skills: { choose: 3, options: ["Acrobatics","Animal Handling","Arcana","Athletics","Deception","History","Insight","Intimidation","Investigation","Medicine","Nature","Perception","Performance","Persuasion","Religion","Sleight of Hand","Stealth","Survival"] },
     armor: ["Light armor"],
     weapons: ["Simple weapons","Hand crossbows","Longswords","Rapiers","Shortswords"],
@@ -281,7 +281,7 @@ const classSkills = {
 
   Cleric: {
     hitDie: 8,
-    startingHP: "8 + Constitution modifier",
+    startingHP: 8,
     skills: { choose: 2, options: ["History","Insight","Medicine","Persuasion","Religion"] },
     armor: ["Light armor","Medium armor","Shields"],
     weapons: ["Simple weapons"],
@@ -290,7 +290,7 @@ const classSkills = {
 
   Druid: {
     hitDie: 8,
-    startingHP: "8 + Constitution modifier",
+    startingHP: 8,
     skills: { choose: 2, options: ["Arcana","Animal Handling","Insight","Medicine","Nature","Perception","Religion","Survival"] },
     armor: ["Light armor","Medium armor","Shields (non-metal)"],
     weapons: ["Clubs","Daggers","Darts","Javelins","Maces","Quarterstaffs","Scimitars","Sickles","Slings","Spears"],
@@ -299,7 +299,7 @@ const classSkills = {
 
   Fighter: {
     hitDie: 10,
-    startingHP: "10 + Constitution modifier",
+    startingHP: 10,
     skills: { choose: 2, options: ["Acrobatics","Animal Handling","Athletics","History","Insight","Intimidation","Perception","Survival"] },
     armor: ["All armor","Shields"],
     weapons: ["Simple weapons","Martial weapons"],
@@ -308,7 +308,7 @@ const classSkills = {
 
   Monk: {
     hitDie: 8,
-    startingHP: "8 + Constitution modifier",
+    startingHP: 8,
     skills: { choose: 2, options: ["Acrobatics","Athletics","History","Insight","Religion","Stealth"] },
     armor: ["None"],
     weapons: ["Simple weapons","Shortswords"],
@@ -317,7 +317,7 @@ const classSkills = {
 
   Paladin: {
     hitDie: 10,
-    startingHP: "10 + Constitution modifier",
+    startingHP: 10,
     skills: { choose: 2, options: ["Athletics","Insight","Intimidation","Medicine","Persuasion","Religion"] },
     armor: ["All armor","Shields"],
     weapons: ["Simple weapons","Martial weapons"],
@@ -326,7 +326,7 @@ const classSkills = {
 
   Ranger: {
     hitDie: 10,
-    startingHP: "10 + Constitution modifier",
+    startingHP: 10,
     skills: { choose: 3, options: ["Animal Handling","Athletics","Insight","Investigation","Nature","Perception","Stealth","Survival"] },
     armor: ["Light armor","Medium armor","Shields"],
     weapons: ["Simple weapons","Martial weapons"],
@@ -335,7 +335,7 @@ const classSkills = {
 
   Rogue: {
     hitDie: 8,
-    startingHP: "8 + Constitution modifier",
+    startingHP: 8,
     skills: { choose: 4, options: ["Acrobatics","Athletics","Deception","Insight","Intimidation","Investigation","Perception","Performance","Persuasion","Sleight of Hand","Stealth"] },
     armor: ["Light armor"],
     weapons: ["Simple weapons","Hand crossbows","Longswords","Rapiers","Shortswords"],
@@ -344,7 +344,7 @@ const classSkills = {
 
   Sorcerer: {
     hitDie: 6,
-    startingHP: "6 + Constitution modifier",
+    startingHP: 6,
     skills: { choose: 2, options: ["Arcana","Deception","Insight","Intimidation","Persuasion","Religion"] },
     armor: ["None"],
     weapons: ["Daggers","Darts","Slings","Quarterstaffs","Light crossbows"],
@@ -353,7 +353,7 @@ const classSkills = {
 
   Warlock: {
     hitDie: 8,
-    startingHP: "8 + Constitution modifier",
+    startingHP: 8,
     skills: { choose: 2, options: ["Arcana","Deception","History","Intimidation","Investigation","Nature","Religion"] },
     armor: ["Light armor"],
     weapons: ["Simple weapons"],
@@ -362,7 +362,7 @@ const classSkills = {
 
   Wizard: {
     hitDie: 6,
-    startingHP: "6 + Constitution modifier",
+    startingHP: 6,
     skills: { choose: 2, options: ["Arcana","History","Insight","Investigation","Medicine","Religion"] },
     armor: ["None"],
     weapons: ["Daggers","Darts","Slings","Quarterstaffs","Light crossbows"],
@@ -370,7 +370,7 @@ const classSkills = {
   },
   Artificer: {
     hitDie: 8,
-    startingHP: "8 + Constitution modifier",
+    startingHP: 8,
     skills: { choose: 2, options: ["Arcana","History","Nature","Investigation","Medicine","Perception", "Sleight of Hand"] },
     armor: ["Light armor","Medium armor","Shields"],
     weapons: ["Simple weapons"],
@@ -868,6 +868,61 @@ const statPriority = {
     "Warlock": "cha",
     "Artificer": "int"
 };
+const raceASI = {
+  // Player's Handbook
+  "Dragonborn": { str: 2, cha: 1 },
+  "Dwarf - Hill": { con: 2, wis: 1 },
+  "Dwarf - Mountain": { con: 2, str: 2 },
+  "Elf - High": { dex: 2, int: 1 },
+  "Elf - Wood": { dex: 2, wis: 1 },
+  "Elf - Drow": { dex: 2, cha: 1 },
+  "Gnome - Forest": { int: 2, dex: 1 },
+  "Gnome - Rock": { int: 2, con: 1 },
+  "Half-Elf": { cha: 2, choose: { count: 2, options: ["str","dex","con","int","wis"] } },
+  "Half-Orc": { str: 2, con: 1 },
+  "Halfling - Lightfoot": { dex: 2, cha: 1 },
+  "Halfling - Stout": { dex: 2, con: 1 },
+  "Human": { str: 1, dex: 1, con: 1, int: 1, wis: 1, cha: 1 },
+  "Tiefling": { int: 1, cha: 2 },
+
+  // Sword Coast Adventurer's Guide
+  "Aasimar": { cha: 2, wis: 1 },
+  "Genasi - Air": { con: 2, dex: 1 },
+  "Genasi - Earth": { con: 2, str: 1 },
+  "Genasi - Fire": { con: 2, int: 1 },
+  "Genasi - Water": { con: 2, wis: 1 },
+
+  // Volo's Guide to Monsters
+  "Aarakocra": { dex: 2, wis: 1 },
+  "Bugbear": { str: 2, dex: 1 },
+  "Firbolg": { wis: 2, str: 1 },
+  "Goblin": { dex: 2, con: 1 },
+  "Hobgoblin": { con: 2, int: 1 },
+  "Kenku": { dex: 2, wis: 1 },
+  "Kobold": { dex: 2, str: -2 },
+  "Lizardfolk": { con: 2, wis: 1 },
+  "Orc": { str: 2, con: 1, int: -2 },
+  "Tabaxi": { dex: 2, cha: 1 },
+  "Triton": { str: 1, con: 1, cha: 1 },
+  "Yuan-ti Pureblood": { cha: 2, int: 1 },
+
+  // Mordenkainen's Tome of Foes
+  "Gith-Githyanki": { str: 2, int: 1 },
+  "Gith-Githzerai": { wis: 2, dex: 1 },
+  "Duergar": { con: 2, str: 1 },
+  "Eladrin": { dex: 2, cha: 1 },
+  "Shadar-kai": { dex: 2, con: 1 },
+
+  // Other official options (Eberron)
+  "Warforged": { con: 2, choose: { count: 1, options: ["str","dex","con","int","wis","cha"] } },
+  "Changelings": { cha: 2, choose: { count: 1, options: ["dex","int","wis"] } },
+  "Kalashtar": { wis: 2, cha: 1 },
+  "Shifters": { dex: 1, choose: { count: 1, options: ["str","dex","con","int","wis","cha"] } },
+
+  // Explorer's Guide to Wildemount
+  "Pallid Elf": { dex: 2, wis: 1 },
+  "Lotusden Halfling": { dex: 2, wis: 1 }
+};
 
 const nameSyllables = {
   // PHB Races
@@ -1121,6 +1176,36 @@ function assignStatsForClass(stats, className) {
     }
     return assigned;
 }
+function addRaceASI(stats, raceName) {
+  const asi = raceASI[raceName];
+  if(!asi) return stats; // No ASI for this race
+
+  let newStats = { ...stats };
+  for (const [ability, value] of Object.entries(asi)) {
+    if (ability === "choose") {
+      const chooseCount = value.count;
+      const options = value.options.filter(opt => opt in newStats);
+      const chosenStats = pickSkills(chooseCount, options);
+      chosenStats.forEach(stat => {
+        newStats[stat] += 1;
+      });
+    } else if (ability in newStats) {
+      newStats[ability] += value;
+    }
+  }
+  return newStats;
+}
+
+function calculateModifier(score) {
+    return Math.floor((score - 10) / 2);
+}
+function calculateModifiers(stats) {
+  const modifiers = {};
+  for (const [ability, score] of Object.entries(stats)) {
+      modifiers[ability] = calculateModifier(score);
+  }
+  return modifiers;
+}
 
 function getAllSkillProficiencies(backgroundName, className, raceName) {
     let availableSkills = [...skillProficiencyList];
@@ -1212,7 +1297,6 @@ function createCharacter() {
     document.getElementById("generate-btn").disabled = true;
     var character = generateCharacter();
     console.log(character);
-    displayCharacter(character);
     setTimeout(() => {
         document.getElementById("generate-btn").disabled = false;
     }, 200);
@@ -1222,53 +1306,82 @@ function closeVideo() {
     document.getElementById("popupVideo").pause();
     document.getElementById("popupVideo").style.display = "none";
     document.getElementById("popupVideo").currentTime = 0;
+    document.getElementsByClassName("box")[0].classList.remove("wizard");
 }
 
 function wizard(){
-    document.getElementById("popupVideo").volume = 0.3;
-    document.getElementById("popupVideo").style.display = "block";
-    document.getElementById("popupVideo").play();
+  document.getElementById("skill-proficiencies-container").innerHTML = "";
+  document.getElementById("proficiencies-container").innerHTML = "";
+  document.getElementById("features-container").innerHTML = "";
+  generateCharacter(
+    {
+      class:"Wizard", 
+      stats:{int:18,cha:18,con:18,str:18,wis:18,dex:18},
+      race:"Gnome - Rock",
+      sex:"Male",
+      background:"Sage",
+      name:"Gandalf the Grey",
+      alignment:"Neutral Good"
+    }
+  );
+  document.getElementsByClassName("box")[0].classList.add("wizard");
+  document.getElementById("popupVideo").volume = 0.3;
+  document.getElementById("popupVideo").style.display = "block";
+  document.getElementById("popupVideo").play();
 }
 
 function displayCharacter(character) {
-    // Basic info
-    if(character.class === "Wizard") {
-        document.getElementById("popupVideo").volume = 0.3;
-        document.getElementById("popupVideo").style.display = "block";
-        document.getElementById("popupVideo").play();
-    }
+    document.getElementsByClassName("box")[0].classList.remove("wizard");
     document.getElementById("char-name").textContent = character.name;
     document.getElementById("char-class").textContent = character.class;
     document.getElementById("char-subclass").textContent = character.subclass;
     document.getElementById("char-background").textContent = character.background;
     document.getElementById("char-race").textContent = character.race;
     document.getElementById("char-alignment").textContent = character.alignment;
+    document.getElementById("char-sex").textContent = character.sex;
+    document.getElementById("char-health").textContent = character.health;
+    document.getElementById("char-hitdie").textContent = character.hitDie;
     
     // Stats
-    document.getElementById("stat-str").textContent = character.stats.str;
-    document.getElementById("stat-dex").textContent = character.stats.dex;
-    document.getElementById("stat-con").textContent = character.stats.con;
-    document.getElementById("stat-int").textContent = character.stats.int;
-    document.getElementById("stat-wis").textContent = character.stats.wis;
-    document.getElementById("stat-cha").textContent = character.stats.cha;
-
+    function formatModifier(mod) {
+      return (mod >= 0 ? "+" : "") + mod; // adds + for positive, keeps - for negative
+    }
+    
     const _stats = ["str", "dex", "con", "int", "wis", "cha"];
     _stats.forEach(stat => {
-        const el = document.getElementById(`stat-${stat}`);
-        const value = character.stats[stat];
-
-        el.textContent = value;
-
-        el.classList.remove("stat-high", "stat-low", "stat-20");
-        if (value >= 15 && value < 18) {
-            el.classList.add("stat-high");
-        } else if (value <= 8) {
-            el.classList.add("stat-low");
-        } else if (value == 18){
-            el.classList.add("stat-20");
-        }
+      const el = document.getElementById(`stat-${stat}`);
+      const value = character.stats[stat];
+      
+      el.textContent = value;
+      
+      el.classList.remove("stat-high", "stat-low", "stat-18","stat-20", "stat-5");
+      if (value >= 15 && value < 18) {
+        el.classList.add("stat-high");
+      } else if (value <= 5){
+        el.classList.add("stat-5");
+      } else if (value <= 8) {
+        el.classList.add("stat-low");
+      } else if (value == 18){
+        el.classList.add("stat-18");
+      } else if (value > 18 && value <= 20){
+        el.classList.add("stat-20");
+      }
     });
-
+    document.getElementById("stats-container").classList.remove("high-total", "low-total");
+    const total = Object.values(character.stats).reduce((sum, value) => sum + value, 0);
+    document.getElementById("total").textContent = total;
+    if(total >= 85) {
+      document.getElementById("stats-container").classList.add("high-total");
+    } else if(total <= 67) {
+      document.getElementById("stats-container").classList.add("low-total");
+    }
+    document.getElementById("stat-str").textContent = `${character.stats.str} [${formatModifier(character.modifiers.str)}]`;
+    document.getElementById("stat-dex").textContent = `${character.stats.dex} [${formatModifier(character.modifiers.dex)}]`;
+    document.getElementById("stat-con").textContent = `${character.stats.con} [${formatModifier(character.modifiers.con)}]`;
+    document.getElementById("stat-int").textContent = `${character.stats.int} [${formatModifier(character.modifiers.int)}]`;
+    document.getElementById("stat-wis").textContent = `${character.stats.wis} [${formatModifier(character.modifiers.wis)}]`;
+    document.getElementById("stat-cha").textContent = `${character.stats.cha} [${formatModifier(character.modifiers.cha)}]`;
+    
     // Skill proficiencies from class and background
     const skillprof = document.getElementById("skill-proficiencies-container");
     character.classSkills.forEach(skill => {
@@ -1326,13 +1439,33 @@ function displayCharacter(character) {
     });
 }
 
-function generateCharacter() {
-    const classIndex = getRandomIndex(dndClasses);
-    const background = backgrounds[getRandomIndex(backgrounds)];
-    const race = races[getRandomIndex(races)];
-    const alignment = alignments[getRandomIndex(alignments)];
-    const className = dndClasses[classIndex];
+function generateCharacter(options = {}) {
+    // Pick class (lock if specified)
+    const className = options.class 
+        ? options.class 
+        : dndClasses[getRandomIndex(dndClasses)];
+
+    const classIndex = dndClasses.indexOf(className);
+
+    // Pick subclass (locked to class if class is specified)
     const subclassName = dndSubclasses[classIndex][getRandomIndex(dndSubclasses[classIndex])];
+
+    // Pick race (lock if specified)
+    const race = options.race 
+        ? options.race 
+        : races[getRandomIndex(races)];
+
+    // Pick background (lock if specified)
+    const background = options.background 
+        ? options.background 
+        : backgrounds[getRandomIndex(backgrounds)];
+
+    // Pick alignment (lock if specified)
+    const alignment = options.alignment 
+        ? options.alignment 
+        : alignments[getRandomIndex(alignments)];
+
+    // Roll stats
     const statRolls = generateStats();
 
     let stats = {
@@ -1344,35 +1477,65 @@ function generateCharacter() {
         cha: 0
     };
 
+    // Assign stats based on chosen class
     stats = assignStatsForClass(statRolls, className);
 
+    if (options.stats) {
+        for (const [key, value] of Object.entries(options.stats)) {
+            if (stats.hasOwnProperty(key)) {
+                stats[key] = value;
+            }
+        }
+    }
+
+    stats = addRaceASI(stats, race);
+
+    const modifiers = calculateModifiers(stats);
+    console.log(modifiers);
+
+    // Skills
     const allSkills = getAllSkillProficiencies(background, className, race);
-    
-    const classSkills = allSkills.classSkills;
+    const _classSkills = allSkills.classSkills;
     const backSkills = allSkills.backSkills;
     const raceSkills = allSkills.raceSkills;
 
     const otherSkills = classProficiencies(className);
     const raceLangs = getRaceLanguages(race);
-    const backLangs = getBackgroundLanguages(raceLangs,background);
+    const backLangs = getBackgroundLanguages(raceLangs, background);
 
     const features = getRaceFeatures(race);
 
-    const name = raceNameGenerator(race);
-    return {
+    const name = options.name 
+        ? options.name 
+        : raceNameGenerator(race);
+
+    const sex = options.sex
+        ? options.sex
+        : Math.random() < 0.5 ? "Male" : "Female";
+
+    const _hitDie = classSkills[className].hitDie;
+    const health = classSkills[className].startingHP + modifiers.con;
+
+    let character = {
         name: name,
         class: className,
         subclass: subclassName,
         race: race,
+        hitDie: "1d" + _hitDie,
+        health: health,
         alignment: alignment,
         stats: stats,
-        classSkills: classSkills,
+        modifiers: modifiers,
+        classSkills: _classSkills,
         backSkills: backSkills,
         otherSkills: otherSkills,
         raceSkills: raceSkills,
         racelanguages: raceLangs,
         backlanguages: backLangs,
         features: features,
+        sex: sex,
         background: background
     };
+    displayCharacter(character);
+    return character;
 }

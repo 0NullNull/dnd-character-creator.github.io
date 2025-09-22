@@ -9,8 +9,9 @@
 <body>
     <div class="container">
         <button onclick="createCharacter()" id="generate-btn">Generate Character</button>
+        <input type="text" name="" id="level" placeholder="Level (1-20) [WIP]" min="1" max="20" disabled>
         <div class="grid">
-            <div class="box">
+            <div class="box auto-height">
                 <video id="popupVideo" class="fullScreenVideo" onended="closeVideo()">
                 <source src="wizard.mp4" type="video/mp4">
                 Your browser does not support HTML5 video.
@@ -23,20 +24,24 @@
                     <li><strong>Subclass:</strong> <span id="char-subclass">-</span></li>
                     <li><strong>Background:</strong> <span id="char-background">-</span></li>
                     <li><strong>Alignment:</strong> <span id="char-alignment">-</span></li>
+                    <li><strong>Sex:</strong> <span id="char-sex">-</span></li>
+                    <li><strong>Health:</strong> <span id="char-health">-</span></li>
+                    <li><strong>Hit-die:</strong> <span id="char-hitdie">-</span></li>
                 </ul>
             </div>
-            <div class="box">
+            <div class="box auto-height" id="stats-container">
                 <h1>Stats</h1>
                 <ul class="stats-list">
-                    <li><strong>Strength:</strong> <span id="stat-str">-</span></li>
-                    <li><strong>Dexterity:</strong> <span id="stat-dex">-</span></li>
-                    <li><strong>Constitution:</strong> <span id="stat-con">-</span></li>
-                    <li><strong>Intelligence:</strong> <span id="stat-int">-</span></li>
-                    <li><strong>Wisdom:</strong> <span id="stat-wis">-</span></li>
-                    <li><strong>Charisma:</strong> <span id="stat-cha">-</span></li>
+                    <li class="stat-li"><strong>Strength:</strong> <span id="stat-str">-</span></li>
+                    <li class="stat-li"><strong>Dexterity:</strong> <span id="stat-dex">-</span></li>
+                    <li class="stat-li"><strong>Constitution:</strong> <span id="stat-con">-</span></li>
+                    <li class="stat-li"><strong>Intelligence:</strong> <span id="stat-int">-</span></li>
+                    <li class="stat-li"><strong>Wisdom:</strong> <span id="stat-wis">-</span></li>
+                    <li class="stat-li"><strong>Charisma:</strong> <span id="stat-cha">-</span></li>
                 </ul>
+                <p class="total-stats">Total: <span id="total">-</span></p>
             </div>
-            <div class="box">
+            <div class="box auto-height">
                 <h1>Skill Proficiencies</h1>
                 <ul class="prof-container scroll" id="skill-proficiencies-container">
                     <!-- Proficiencies will be dynamically added here -->
