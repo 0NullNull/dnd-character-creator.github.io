@@ -1321,9 +1321,10 @@ function closeVideo() {
   document.getElementById("features-container").innerHTML = "";
   generateCharacter(
     {
-      class:"Wizard", 
-      stats:{int:18,cha:18,con:18,str:18,wis:18,dex:18},
-      race:"Gnome - Rock",
+      class:"Wizard",
+      subclass:"School of Divination", 
+      stats:{int:20,cha:18,con:18,str:18,wis:18,dex:18},
+      race:"Aasimar",
       sex:"Male",
       background:"Sage",
       name:"Gandalf the Grey",
@@ -1454,7 +1455,9 @@ function generateCharacter(options = {}) {
     const classIndex = dndClasses.indexOf(className);
 
     // Pick subclass (locked to class if class is specified)
-    const subclassName = dndSubclasses[classIndex][getRandomIndex(dndSubclasses[classIndex])];
+    const subclassName = options.subclass
+      ? options.subclass
+      : dndSubclasses[classIndex][getRandomIndex(dndSubclasses[classIndex])];
 
     // Pick race (lock if specified)
     const race = options.race 
