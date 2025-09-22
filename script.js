@@ -970,8 +970,8 @@ const nameSyllables = {
 
   Human: {
     prefix: ["Al", "Mar", "El", "Jon", "Ka", "Ri", "Cor", "Va", "Da", "Lu", "Tho", "Ser", "Ben", "Gar", "Fen", "Syl"],
-    middle: ["den", "mar", "lin", "vor", "ric", "", "nor", "el", "an", "ias", "or", "is", "ath", "us"],
-    suffix: ["ric", "ia", "on", "eth", "ar", "us", "iel", "an", "or", "en", "as"]
+    middle: ["den", "mar", "lin", "vor", "ric", "", "nor", "el", "an", "ias", "or", "is", "ath", "us", "pha"],
+    suffix: ["ric", "ia", "on", "eth", "ar", "us", "iel", "an", "or", "en", "as", " susi"]
   },
 
   Tiefling: {
@@ -1291,9 +1291,6 @@ function raceNameGenerator(raceName){
 function createCharacter() {
     console.clear();
     closeVideo();
-    document.getElementById("skill-proficiencies-container").innerHTML = "";
-    document.getElementById("proficiencies-container").innerHTML = "";
-    document.getElementById("features-container").innerHTML = "";
     document.getElementById("generate-btn").disabled = true;
     var character = generateCharacter();
     console.log(character);
@@ -1303,9 +1300,11 @@ function createCharacter() {
 }
 
 function closeVideo() { 
-  document.getElementById("popupVideo").pause();
-  document.getElementById("popupVideo").style.display = "none";
-  document.getElementById("popupVideo").currentTime = 0;
+  Array.from(document.getElementsByClassName("fullScreenVideo")).forEach(el => {
+    el.pause();
+    el.style.display = "none";
+    el.currentTime = 0;
+  });
   document.getElementsByClassName("box")[0].classList.remove("wizard");
   Array.from(document.getElementsByClassName("character-info")[0].children).forEach(li =>
     li.classList.remove("remove-bg")
@@ -1337,7 +1336,17 @@ function closeVideo() {
   document.getElementById("popupVideo").play();
 }
 
+function susiVideo(){
+  document.getElementById("susivideo").volume = 0.3;
+  document.getElementById("susivideo").style.display = "block";
+  document.getElementById("susivideo").play();
+}
+
 function displayCharacter(character) {
+
+    if(character.name.toLowerCase() === "alpha susi"){
+      susiVideo();
+    }
     document.getElementsByClassName("box")[0].classList.remove("wizard");
     document.getElementById("char-name").textContent = character.name;
     document.getElementById("char-class").textContent = character.class;
@@ -1447,6 +1456,9 @@ function displayCharacter(character) {
 }
 
 function generateCharacter(options = {}) {
+    document.getElementById("skill-proficiencies-container").innerHTML = "";
+    document.getElementById("proficiencies-container").innerHTML = "";
+    document.getElementById("features-container").innerHTML = "";
     // Pick class (lock if specified)
     const className = options.class 
         ? options.class 

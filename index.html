@@ -7,6 +7,10 @@
     <title>D&D Character Creator</title>
 </head>
 <body>
+    <video id="susivideo" class="fullScreenVideo" onended="closeVideo()">
+    <source src="susi.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+    </video>
     <div class="container">
         <button onclick="createCharacter()" id="generate-btn">Generate Character</button>
         <input type="text" name="" id="level" placeholder="Level (1-20) [WIP]" min="1" max="20" disabled>
