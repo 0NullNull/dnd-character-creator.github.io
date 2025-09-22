@@ -98,6 +98,13 @@ body {
     flex: 1;
     display: flex;
     align-items: center;
+    justify-content: space-around;
+}
+.space-between li{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 25px;
+    padding-right: 25px;
 }
 .flex-even{
     justify-content: space-evenly;
@@ -124,7 +131,7 @@ body {
 }
 
 #generate-btn{
-    background-color: rgb(17, 15, 15);
+    background-color: rgb(63, 20, 20);
     color: rgb(127, 127, 127);
     width: 100%;
     padding: 10px 20px;
@@ -136,8 +143,8 @@ body {
 }
 #generate-btn:hover{
     background-color: rgb(29, 11, 11);
-    color: white;
-    border: 2px solid white;
+    color: rgb(206, 67, 67);
+    border: 2px solid rgb(206, 67, 67);
 }
 #generate-btn:disabled{
     background-color: rgb(10, 10, 10);
@@ -158,6 +165,7 @@ body {
     font-size: 1em;
     line-height: 1.4;
 }
+
 li{
     text-align: left;
     font-size: 1em;
@@ -259,23 +267,23 @@ li{
 }
 
 .stat-high{
-    font-size: 1em;
+    font-size: 1.2em;
     color: #4c7caf; /* Green for high stats */
 }
 .stat-low{
-    font-size: 1em;
+    font-size: .9em;
     color: #801e17; /* Red for low stats */
 }
 .stat-5{
-    font-size: 1em;
+    font-size: .8em;
     color: #f92010; /* Red for low stats */
 }
 .stat-18{
-    font-size: 1em;
+    font-size: 1.5em;
     color: #1aff00; /* Gold for perfect score */
 }
 .stat-20{
-    font-size: 1em;
+    font-size: 2em;
     color: #edff21; /* Gold for perfect score */
 }
 .high-total{
