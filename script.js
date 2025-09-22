@@ -1109,24 +1109,19 @@ function pickSkills(choose, options) {
 
 function assignStatsForClass(stats, className) {
     stats.sort((a, b) => b - a); // Sort stats descending
-    //console.log(stats);
     const priority = statPriority[className];
-    //console.log(priority);
     const statOrder = ["str", "dex", "con", "int", "wis", "cha"];
     // Move the priority stat to the front
     statOrder.splice(statOrder.indexOf(priority), 1);
     statOrder.unshift(priority);
-    //console.log(statOrder);
     const assigned = {};
     for (let i = 0; i < statOrder.length; i++) {
         assigned[statOrder[i]] = stats[i];
     }
-    //console.log(assigned);
     return assigned;
 }
 
 function getAllSkillProficiencies(backgroundName, className, raceName) {
-    console.log(backgroundName, className, raceName);
     let availableSkills = [...skillProficiencyList];
     const backSkills = backgroundProficiencies[backgroundName].skills;
     availableSkills = [...availableSkills.filter(skill => !backSkills.includes(skill))];
@@ -1170,7 +1165,6 @@ function classProficiencies(className){
 
 function getRaceLanguages(raceName) {
     const langs = raceLanguages[raceName];
-    console.log(raceLanguages[raceName]);
     if(langs.includes("random")) {
         const avaliableLangs = dndLanguages.filter(lang => !langs.includes(lang));
         const randomLang = avaliableLangs[getRandomIndex(avaliableLangs)];
@@ -1197,7 +1191,6 @@ function getRaceFeatures(raceName) {
 
 function raceNameGenerator(raceName){
     const race = raceName.split(" ")[0]; // Handle subraces
-    console.log(race)
     if(race in nameSyllables) {
         const syllables = nameSyllables[raceName] || nameSyllables["Human"];
         const prefix = syllables.prefix[getRandomIndex(syllables.prefix)];
@@ -1217,6 +1210,7 @@ function createCharacter() {
     document.getElementById("features-container").innerHTML = "";
     document.getElementById("generate-btn").disabled = true;
     var character = generateCharacter();
+    console.log(character);
     displayCharacter(character);
     setTimeout(() => {
         document.getElementById("generate-btn").disabled = false;
