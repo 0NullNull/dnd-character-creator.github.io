@@ -923,6 +923,120 @@ const raceASI = {
   "Pallid Elf": { dex: 2, wis: 1 },
   "Lotusden Halfling": { dex: 2, wis: 1 }
 };
+const reputations = [
+  // Nobodies / mundane
+  "Completely unknown outside your village",
+  "A face in the crowd",
+  "Forgotten even by your neighbors",
+  "Barely remembered by your family",
+  "Just another wanderer on the road",
+  "Unremarkable in every way",
+  "Known only by your drinking buddies",
+  "A name no one bothers to recall",
+  "Your deeds go unnoticed",
+  "Simply another soldier in the ranks",
+
+  // Local & small-scale
+  "Well-liked in your hometown",
+  "Trusted by your companions",
+  "Beloved by children in your village",
+  "Mocked by local tavern-goers",
+  "Respected by fellow workers",
+  "Known for a single embarrassing story",
+  "Rumored to be unlucky",
+  "Remembered for losing a bet",
+  "Said to be a decent cook",
+  "Locals say you talk too much",
+
+  // Notorious / infamous
+  "Despised by local authorities",
+  "Branded a coward",
+  "Accused of witchcraft",
+  "Blamed for a tragedy",
+  "Hunted by bounty hunters",
+  "Outlaw with a price on your head",
+  "Rumored to consort with dark powers",
+  "Mocked as a drunkard",
+  "Distrusted by merchants",
+  "Despised by your kin",
+
+  // Renowned / legendary
+  "Celebrated as a hero of the people",
+  "Revered among warriors",
+  "Respected in scholarly circles",
+  "Trusted by priests",
+  "Champion of the arena",
+  "Hero of a forgotten war",
+  "Keeper of forbidden knowledge",
+  "A local legend in tavern tales",
+  "A name whispered with awe",
+  "Rumored to be immortal",
+  "Revered prophet",
+  "Praised as a saintly figure"
+];
+const hobbyPrefixes = [
+  "Amateur", "Master of", "Secret", "Obsessive", "Occasional", "Traveling", "Rogue", "Drunken"
+];
+const hobbyBase = [
+  "Painting", "Carving", "Whittling", "Cooking", "Hunting", "Fishing", "Gambling",
+  "Storytelling", "Singing", "Dancing", "Brewing", "Smithing", "Tattooing", "Herbalism",
+  "Falconry", "Calligraphy", "Juggling", "Chess", "Dice Games", "Gardening", "Sailing",
+  "Beekeeping", "Horsemanship", "Fletching", "Lockpicking (for fun!)", "Star-Gazing",
+  "Collecting Bones", "Mapmaking", "Scroll Copying", "Monster Taxidermy"
+];
+const hobbySuffixes = [
+  "addict", "for coin", "for children", "for nobles", "to relax", "as a cover", "to honor ancestors",
+  "with flair", "in secret", "to impress lovers", "in competition", "with a magical twist"
+];
+const secrets = [
+  // Trivial / meaningless
+  "Keeps a collection of odd coins",
+  "Hums an embarrassing song when nervous",
+  "Writes their name in every book they read",
+  "Always smells the food before eating",
+  "Has an irrational fear of squirrels",
+  "Sleeps with a small toy or trinket",
+  "Talks to a plant or pet when alone",
+  "Steals small items nobody notices",
+  "Carries a ridiculous lucky charm",
+  "Has a secret stash of sweets",
+
+  // Personal / local importance
+  "Once cheated in a local contest",
+  "Knows the town guard’s embarrassing secrets",
+  "Was caught in a scandalous misunderstanding",
+  "Owes a favor to a minor local official",
+  "Is secretly a talented musician or artist",
+  "Has a secret hideout in the city or forest",
+  "Once helped a stranger and never told anyone",
+  "Knows a local noble’s shameful story",
+  "Keeps a secret diary of personal thoughts",
+  "Has an unknown relative in a neighboring town",
+
+  // Regional / adventurous importance
+  "Holds a key to a long-forgotten ruin",
+  "Knows the location of a hidden treasure",
+  "Was witness to a crime or betrayal",
+  "Knows the secret name of a powerful creature",
+  "Has a map to an ancient battlefield",
+  "Knows a forbidden spell or ritual",
+  "Once stole from a corrupt official",
+  "Was involved in a secret rebellion",
+  "Knows the identity of a mysterious figure",
+  "Has seen something no one believes exists",
+
+  // Potentially world-changing / high-stakes
+  "Holds the true heir to a lost kingdom",
+  "Knows the location of a legendary weapon",
+  "Was part of a failed assassination attempt",
+  "Knows a prophecy that could change the realm",
+  "Has evidence of a conspiracy among nobles",
+  "Cursed or blessed by a powerful being",
+  "Is the unwitting holder of a dangerous artifact",
+  "Knows the weakness of a feared tyrant",
+  "Was trained by a secretive guild or order",
+  "Has a hidden power that could tip a war"
+];
 
 const nameSyllables = {
   // PHB Races
@@ -1123,7 +1237,6 @@ const nameSyllables = {
   }
 };
 
-
 function getRandomIndex(array) {
     return Math.floor(Math.random() * array.length);
 }
@@ -1142,6 +1255,10 @@ function generateStat() {
     // Drop the lowest roll
     rolls.shift();
     return rolls.reduce((sum, val) => sum + val, 0);
+}
+
+function sumArray(array){
+  return array.reduce((sum, val) => sum + val, 0);
 }
 
 function generateStats() {
@@ -1286,6 +1403,14 @@ function raceNameGenerator(raceName){
     } else {
         return "Nameless One"; // Default name
     }
+}
+
+function generateHobby(){
+  const parts = [];
+  if (Math.random() < 0.3) parts.push(hobbyPrefixes[Math.floor(Math.random() * hobbyPrefixes.length)]);
+  parts.push(hobbyBase[Math.floor(Math.random() * hobbyBase.length)])
+  if (Math.random() < 0.3) parts.push(hobbySuffixes[Math.floor(Math.random() * hobbySuffixes.length)]);
+  return parts.join(" ");
 }
 
 function createCharacter() {
@@ -1453,6 +1578,12 @@ function displayCharacter(character) {
         div.appendChild(desc);
         raceFeatContainer.appendChild(div);
     });
+    document.getElementById("hotness").textContent = character.hotness;
+    document.getElementById("main-hand").textContent = character.mainhand;
+    document.getElementById("social-standing").textContent = character.standing;
+    document.getElementById("hobby").textContent = character.hobby;
+    document.getElementById("reputation").textContent = character.reputation;
+    document.getElementById("secret").textContent = character.secret;
 }
 
 function generateCharacter(options = {}) {
@@ -1536,6 +1667,33 @@ function generateCharacter(options = {}) {
     const _hitDie = classSkills[className].hitDie;
     const health = classSkills[className].startingHP + modifiers.con;
 
+    const hotness = sumArray(rollDice(3, 6));
+    
+    var mainhand = "";
+    const handroll = rollDice(1, 100);
+    console.log(`Hand roll: ${handroll}`)
+    if (handroll >= 100) {
+      mainhand = "Both";
+    } else if(handroll >= 90 && handroll != 100){
+      mainhand = "Left";
+    } else if(handroll < 89){
+      mainhand = "Right";
+    }
+    var standing = "";
+    const standingRoll = rollDice(1, 100);
+    console.log(`Standing roll: ${standingRoll}`)
+    if (standingRoll >= 95) {
+      standing = "Noble";
+    } else if(standingRoll >= 80 && handroll < 95){
+      standing = "Merchant";
+    } else if(standingRoll < 80){
+      standing = "Peasant";
+    }
+
+    const reputation = reputations[Math.floor(Math.random() * reputations.length)]
+    const hobby = generateHobby();
+    const secret = secrets[Math.floor(Math.random() * secrets.length)];
+
     let character = {
         name: name,
         class: className,
@@ -1554,6 +1712,12 @@ function generateCharacter(options = {}) {
         backlanguages: backLangs,
         features: features,
         sex: sex,
+        hotness: hotness,
+        mainhand: mainhand,
+        standing: standing,
+        reputation: reputation,
+        hobby: hobby,
+        secret: secret,
         background: background
     };
     displayCharacter(character);
