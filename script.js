@@ -1504,14 +1504,21 @@ function displayCharacter(character) {
         el.classList.add("stat-20");
       }
     });
-    document.getElementById("stats-container").classList.remove("high-total", "low-total");
+    document.getElementById("stats-container").classList.remove("high-total", "low-total", "god-roll");
     const total = Object.values(character.stats).reduce((sum, value) => sum + value, 0);
     document.getElementById("total").textContent = total;
-    if(total >= 85) {
+    if(total >= 92) {
+      document.getElementById("stats-container").classList.add("god-roll");
+      alert("GOD ROLL");
+      document.getElementById("generate-btn").disabled = true;
+      setTimeout(() => {
+        document.getElementById("generate-btn").disabled = false;
+      }, 2000);
+    } else if(total >= 83) {
       document.getElementById("stats-container").classList.add("high-total");
     } else if(total <= 67) {
-      document.getElementById("stats-container").classList.add("low-total");
-    }
+        document.getElementById("stats-container").classList.add("low-total");
+    } 
     document.getElementById("stat-str").textContent = `${character.stats.str} [${formatModifier(character.modifiers.str)}]`;
     document.getElementById("stat-dex").textContent = `${character.stats.dex} [${formatModifier(character.modifiers.dex)}]`;
     document.getElementById("stat-con").textContent = `${character.stats.con} [${formatModifier(character.modifiers.con)}]`;

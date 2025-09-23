@@ -301,6 +301,11 @@ li{
     border: 2px solid #a0ad16;
     background: linear-gradient(0deg, rgb(255, 243, 16) -50%, rgba(70,70,20,0.5) 50%);
 }
+.god-roll{
+    box-shadow: 0 0 0px #faffbd, 0 0 0px #f5ff87, 0 0 50px #818643;
+    border: 2px solid #a0ad16;
+    background: linear-gradient(0deg, rgb(255, 250, 155) -50%, rgb(255, 255, 255) 50%);
+}
 .low-total{
     border: 2px solid #ad1616;
     background: linear-gradient(0deg, rgb(255, 16, 16) -50%, rgba(70,20,20,0.5) 50%);
