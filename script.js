@@ -1409,15 +1409,37 @@ function generateHobby(){
   return parts.join(" ");
 }
 
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    return null;
+}
+
+// Set/update a cookie
+function setCookie(name, value, days = 365) {
+    const expires = new Date(Date.now() + days * 864e5).toUTCString();
+    document.cookie = `${name}=${value}; expires=${expires}; path=/`;
+}
+
+// Example: increment rolls
+function incrementRollCount() {
+    let count = parseInt(getCookie("rollCount")) || 0;
+    count++;
+    setCookie("rollCount", count);
+    return count;
+}
+var totalRolls = getCookie("rollCount") || 0;
 function createCharacter() {
-    console.clear();
-    closeVideo();
-    document.getElementById("generate-btn").disabled = true;
-    var character = generateCharacter();
-    console.log(character);
-    setTimeout(() => {
-        document.getElementById("generate-btn").disabled = false;
-    }, 200);
+  totalRolls = incrementRollCount();
+  console.clear();
+  closeVideo();
+  document.getElementById("generate-btn").disabled = true;
+  var character = generateCharacter();
+  console.log(character);
+  setTimeout(() => {
+      document.getElementById("generate-btn").disabled = false;
+  }, 200);
 }
 
 function closeVideo() { 
@@ -1463,11 +1485,17 @@ function susiVideo(){
   document.getElementById("susivideo").play();
 }
 
+window.onload = function(){
+  document.getElementById("characters-rolled").textContent = `characters rolled: ${totalRolls}`
+}
+
 function displayCharacter(character) {
 
     if(character.name.toLowerCase() === "alpha susi"){
       susiVideo();
     }
+    document.getElementById("characters-rolled").textContent = `characters rolled: ${totalRolls}`
+
     document.getElementsByClassName("box")[0].classList.remove("wizard");
     document.getElementById("char-name").textContent = character.name;
     document.getElementById("char-class").textContent = character.class;
