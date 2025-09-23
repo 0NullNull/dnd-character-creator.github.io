@@ -1394,15 +1394,11 @@ function getRaceFeatures(raceName) {
 
 function raceNameGenerator(raceName){
     const race = raceName.split(" ")[0]; // Handle subraces
-    if(race in nameSyllables) {
-        const syllables = nameSyllables[raceName] || nameSyllables["Human"];
-        const prefix = syllables.prefix[getRandomIndex(syllables.prefix)];
-        const middle = syllables.middle[getRandomIndex(syllables.middle)];
-        const suffix = syllables.suffix[getRandomIndex(syllables.suffix)];
-        return prefix + middle + suffix;
-    } else {
-        return "Nameless One"; // Default name
-    }
+    const syllables = nameSyllables[raceName] || nameSyllables["Human"];
+    const prefix = syllables.prefix[getRandomIndex(syllables.prefix)];
+    const middle = syllables.middle[getRandomIndex(syllables.middle)];
+    const suffix = syllables.suffix[getRandomIndex(syllables.suffix)];
+    return prefix + middle + suffix;
 }
 
 function generateHobby(){
