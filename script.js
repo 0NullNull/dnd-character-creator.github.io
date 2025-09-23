@@ -1517,7 +1517,7 @@ function displayCharacter(character) {
     } else if(total >= 83) {
       document.getElementById("stats-container").classList.add("high-total");
     } else if(total <= 67) {
-        document.getElementById("stats-container").classList.add("low-total");
+      document.getElementById("stats-container").classList.add("low-total");
     } 
     document.getElementById("stat-str").textContent = `${character.stats.str} [${formatModifier(character.modifiers.str)}]`;
     document.getElementById("stat-dex").textContent = `${character.stats.dex} [${formatModifier(character.modifiers.dex)}]`;
@@ -1529,59 +1529,64 @@ function displayCharacter(character) {
     // Skill proficiencies from class and background
     const skillprof = document.getElementById("skill-proficiencies-container");
     character.classSkills.forEach(skill => {
-        const li = document.createElement("li");
-        li.className = "class-skill skill";
-        li.textContent = "[CLASS] " + skill;
-        skillprof.appendChild(li);
+      const li = document.createElement("li");
+      li.className = "class-skill skill";
+      li.textContent = "[CLASS] " + skill;
+      skillprof.appendChild(li);
     });
     character.backSkills.forEach(skill => {
-        const li = document.createElement("li");
-        li.className = "background-skill skill";
-        li.textContent = "[BACKGROUND] " + skill;
-        skillprof.appendChild(li);
+      const li = document.createElement("li");
+      li.className = "background-skill skill";
+      li.textContent = "[BACKGROUND] " + skill;
+      skillprof.appendChild(li);
     });
     character.raceSkills.forEach(skill => {
-        const li = document.createElement("li");
-        li.className = "race-skill skill";
-        li.textContent = "[RACE] " + skill;
-        skillprof.appendChild(li);
+      const li = document.createElement("li");
+      li.className = "race-skill skill";
+      li.textContent = "[RACE] " + skill;
+      skillprof.appendChild(li);
     });
-
+    
     // All other proficiencies (tools, armor, weapons, languages)
     const otherProfs = document.getElementById("proficiencies-container");
     character.otherSkills.forEach(prof => {
-        const li = document.createElement("li");
-        li.className = "other-prof skill";
-        li.textContent = prof;
-        otherProfs.appendChild(li);
+      const li = document.createElement("li");
+      li.className = "other-prof skill";
+      li.textContent = prof;
+      otherProfs.appendChild(li);
     });
     character.racelanguages.forEach(lang => {
-        const li = document.createElement("li");
-        li.className = "race-language skill";
-        li.textContent = "[LANGUAGE] " + lang;
-        otherProfs.appendChild(li);
+      const li = document.createElement("li");
+      li.className = "race-language skill";
+      li.textContent = "[LANGUAGE] " + lang;
+      otherProfs.appendChild(li);
     });
     character.backlanguages.forEach(lang => {
-        const li = document.createElement("li");
-        li.className = "back-language skill";
-        li.textContent = "[LANGUAGE] " + lang;
-        otherProfs.appendChild(li);
+      const li = document.createElement("li");
+      li.className = "back-language skill";
+      li.textContent = "[LANGUAGE] " + lang;
+      otherProfs.appendChild(li);
     });
-
+    
     // Race features
     const raceFeatContainer = document.getElementById("features-container");
     character.features.forEach(feature => {
-        const div = document.createElement("div");
-        div.className = "feature";
-        const title = document.createElement("h4");
-        title.textContent = feature.name;
-        const desc = document.createElement("p");
-        desc.textContent = feature.desc;
-        div.appendChild(title);
-        div.appendChild(desc);
-        raceFeatContainer.appendChild(div);
+      const div = document.createElement("div");
+      div.className = "feature";
+      const title = document.createElement("h4");
+      title.textContent = feature.name;
+      const desc = document.createElement("p");
+      desc.textContent = feature.desc;
+      div.appendChild(title);
+      div.appendChild(desc);
+      raceFeatContainer.appendChild(div);
     });
     document.getElementById("hotness").textContent = character.hotness;
+    document.getElementById("hotness").classList.remove("stat-20");
+    if (character.hotness >= 16) {
+      document.getElementById("hotness").classList.add("stat-20");
+    }
+    
     document.getElementById("main-hand").textContent = character.mainhand;
     document.getElementById("social-standing").textContent = character.standing;
     document.getElementById("hobby").textContent = character.hobby;
@@ -1670,7 +1675,10 @@ function generateCharacter(options = {}) {
     const _hitDie = classSkills[className].hitDie;
     const health = classSkills[className].startingHP + modifiers.con;
 
-    const hotness = sumArray(rollDice(3, 6));
+    
+    const hotness = options.hotness
+      ? options.hotness
+      : sumArray(rollDice(3, 6));
     
     var mainhand = "";
     const handroll = rollDice(1, 100);
