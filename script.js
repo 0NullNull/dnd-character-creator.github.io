@@ -1673,7 +1673,7 @@ function generateCharacter(options = {}) {
     const handroll = rollDice(1, 100);
     console.log(`Hand roll: ${handroll}`)
     if (handroll >= 100) {
-      mainhand = "Ambidexterous";
+      mainhand = "Ambidextrous";
     } else if(handroll >= 90 && handroll != 100){
       mainhand = "Left";
     } else if(handroll <= 89){
